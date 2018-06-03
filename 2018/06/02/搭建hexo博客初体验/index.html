@@ -87,7 +87,7 @@
 <meta property="og:description" content="摘要：这是一篇关于小白如何使用Github Pages和Hexo搭建属于自己的博客：  如何使用和配置Hexo框架 如何将Hexo部署到自己的github项目中前言：很久之前早就想弄一个自己的博客，但是迟迟没有落实，大概是一直没有找到自己想要的那种博客（借口~），今天看了stormzhang公众号的一篇文章《我为什么坚持写博客？》推荐的hexo，上网了解了下发现这大概就是我想要的吧~经过一下午折腾">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.imgur.com/qwUokyx.png">
-<meta property="og:updated_time" content="2018-06-03T04:43:33.978Z">
+<meta property="og:updated_time" content="2018-06-03T04:51:52.317Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建Hexo博客初体验">
 <meta name="twitter:description" content="摘要：这是一篇关于小白如何使用Github Pages和Hexo搭建属于自己的博客：  如何使用和配置Hexo框架 如何将Hexo部署到自己的github项目中前言：很久之前早就想弄一个自己的博客，但是迟迟没有落实，大概是一直没有找到自己想要的那种博客（借口~），今天看了stormzhang公众号的一篇文章《我为什么坚持写博客？》推荐的hexo，上网了解了下发现这大概就是我想要的吧~经过一下午折腾">
@@ -340,9 +340,9 @@
         <h1 id="摘要："><a href="#摘要：" class="headerlink" title="摘要："></a>摘要：</h1><p>这是一篇关于小白如何使用Github Pages和Hexo搭建属于自己的博客：</p>
 <ol>
 <li>如何使用和配置Hexo框架</li>
-<li>如何将Hexo部署到自己的github项目中<h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1>很久之前早就想弄一个自己的博客，但是迟迟没有落实，大概是一直没有找到自己想要的那种博客（借口~），今天看了stormzhang公众号的一篇文章《我为什么坚持写博客？》推荐的hexo，上网了解了下发现这大概就是我想要的吧~经过一下午折腾终于搭建属于自己的博客，我觉得很有必要把整个过程写下来分享给大家互相学习使用。不废话了直奔主题！<h1 id="一、环境配置"><a href="#一、环境配置" class="headerlink" title="一、环境配置"></a>一、环境配置</h1></li>
+<li>如何将Hexo部署到自己的github项目中<h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1>很久之前早就想弄一个自己的博客，但是迟迟没有落实，大概是一直没有找到自己想要的那种博客（借口~），今天看了stormzhang公众号的一篇文章《我为什么坚持写博客？》推荐的hexo，上网了解了下发现这大概就是我想要的吧~经过一下午折腾终于搭建属于自己的博客，我觉得很有必要把整个过程写下来分享给大家互相学习使用。不废话了直奔主题！</li>
 </ol>
-<p><strong>安装node.js</strong></p>
+<h1 id="一、环境配置"><a href="#一、环境配置" class="headerlink" title="一、环境配置"></a>一、环境配置</h1><p><strong>安装node.js</strong></p>
 <p><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">下载node.js</a><br>选择自己电脑版本的<br><img src="https://i.imgur.com/PObCNrt.png" alt=""><br>本人是windows 64位，直接傻瓜式下载使用即可</p>
 <p><strong>安装git</strong></p>
 <p><a href="https://git-scm.com/download/win" target="_blank" rel="noopener">下载git</a><br>同样是根据电脑版本下载</p>
@@ -362,7 +362,7 @@
 <pre><code>1.hexo g # hexo generate, 生成静态文件
 2.hexo s # hexo server，可以在http://localhost:4000/ 查看 
 </code></pre><p>其他hexo命令用法可参考 <a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">Hexo官网</a></p>
-<p>接下来我们可以在本地预览自己的博客了，打开<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
+<p>接下来我们可以在本地预览自己的博客了，打开<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a><br><img src="https://i.imgur.com/nTBog0f.png" alt=""></p>
 <h1 id="三、Github-Pages配置"><a href="#三、Github-Pages配置" class="headerlink" title="三、Github Pages配置"></a>三、Github Pages配置</h1><p>顾名思义需要一个Github账号，然后创建一个仓库：<br><img src="https://i.imgur.com/QUPRsyk.png" alt=""></p>
 <font color="#A52A2A" size="4"><br><br>注意：仓库的名字必须是username/username.github.io<br><br>注意：仓库的名字必须是username/username.github.io<br><br>注意：仓库的名字必须是username/username.github.io<br><br></font><br>例如：我的用户名为jefff8,那么Repository name必须命名为：jefff8.github.io<br><br>重要的事情说三遍！！！（当初踩过的坑…）<br><br><strong>配置SSH密钥</strong><br><br>上传文件需要配置ssh key，所以首先需要检查本机电脑是否已经存在SSH keys，如果存在删除 .ssh文件夹里面的所有文件（如果不存在的忽略这条）<br><br><img src="https://i.imgur.com/zPoz1X3.png" alt=""><br><br>然后设置下name和email<br><br>    git config –global user.name “<your name="">“<br>    git config –global user.email “<your email="">“<br><br>name的名字随便起，email我建议填github同一个邮箱<br><br><strong>生成SSH密钥</strong><br><br>输入一下命令生成，邮箱是github里面注册的邮箱，ok回车：<br><br>    ssh-keygen -t rsa -C “<a href="mailto:XXXXX@qq.com" target="_blank" rel="noopener">XXXXX@qq.com</a>“<br><br>一路按回车键即可，如果设置了密码请记住。<br>这一步在~/.ssh/下生成了两个文件id_rsa 和 id_rsa.pub<br><br><strong>获取SSH密钥</strong><br><br>    $ cat ~/.ssh/id_rsa.pub<br>新建一个key，然后拷贝下生成的key<br><img src="https://i.imgur.com/z3CpzEt.png" alt=""><br>key粘贴刚刚生成的密钥，title随便起<br><br><font color="#A52A2A">注意：重点圈起来，key下面的√记得一定要打哦！不然后面会报错，又是踩过的坑说多都是泪…</font>
 
@@ -389,9 +389,9 @@ Connection to github.com closed.
 <pre><code>hexo g
 hexo d
 </code></pre><p>now，你可以输入<a href="https://username.github.io" target="_blank" rel="noopener">https://username.github.io</a>来访问自己的博客啦（开森）！！！</p>
-<h1 id="五、关于Hexo使用"><a href="#五、关于Hexo使用" class="headerlink" title="五、关于Hexo使用"></a>五、关于Hexo使用</h1></li>
+</li>
 </ul>
-<p><strong>①更换主题</strong></p>
+<h1 id="五、关于Hexo使用"><a href="#五、关于Hexo使用" class="headerlink" title="五、关于Hexo使用"></a>五、关于Hexo使用</h1><p><strong>①更换主题</strong></p>
 <p>可以进入<a href="https://hexo.io/themes/" target="_blank" rel="noopener">Hexo官网主题专栏</a>找到自己想要的主题（个人强推：next）<br><img src="https://i.imgur.com/o5mCSms.png" alt=""></p>
 <p>找到想要的然后到克隆主题啦，十分简单，复制github地址输入一下命令：</p>
 <pre><code>git clone https://github.com/iissnan/hexo-theme-next(此处地址替换成你需要使用的主题的地址)
