@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Vue," />
+  <meta name="keywords" content="CSS," />
 
 
 
@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="前言：&amp;emsp;这是一篇使用vue前端框架从入门到实战的学习记录，内容主要是项目中所使用的技术与遇到的问题，来不及解释了直接来吧！ 一、创建项目&amp;emsp;默认已安装好node.js环境&amp;emsp;关于ESlint的语法提示机制是否使用个人感觉还是根据个人编写代码风格习惯而定。本人在刚开始开发过程中尝试使用会报出很多格式上的错误警告，对于开发效率有了一定影响，最后决定统一使用Vetur插件来格式">
-<meta name="keywords" content="Vue">
+<meta name="description" content="前言：因为深知前端布局的重要性，所以写一篇由一个布局设计的题目延伸出前端的几种常见页面布局方式，通过实践与查阅相关资料，加深对于css的布局的理解，之后再分别单独详细说明各个布局。 一、题目： 二、解决方案常见页面布局解决方案：  浮动 绝对定位 flex布局 table-cell表格布局 grid网格布局  实现效果：（中间div能够自适应宽度） 三、方案实践1.浮动什么是浮动：在我们布局的时用">
+<meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="去哪儿网项目实战">
-<meta property="og:url" content="http://yoursite.com/2018/08/12/去哪儿网项目实战/index.html">
+<meta property="og:title" content="浅谈常见页面布局">
+<meta property="og:url" content="http://yoursite.com/2018/08/18/浅谈常见页面布局/index.html">
 <meta property="og:site_name" content="在bug边缘试探">
-<meta property="og:description" content="前言：&amp;emsp;这是一篇使用vue前端框架从入门到实战的学习记录，内容主要是项目中所使用的技术与遇到的问题，来不及解释了直接来吧！ 一、创建项目&amp;emsp;默认已安装好node.js环境&amp;emsp;关于ESlint的语法提示机制是否使用个人感觉还是根据个人编写代码风格习惯而定。本人在刚开始开发过程中尝试使用会报出很多格式上的错误警告，对于开发效率有了一定影响，最后决定统一使用Vetur插件来格式">
+<meta property="og:description" content="前言：因为深知前端布局的重要性，所以写一篇由一个布局设计的题目延伸出前端的几种常见页面布局方式，通过实践与查阅相关资料，加深对于css的布局的理解，之后再分别单独详细说明各个布局。 一、题目： 二、解决方案常见页面布局解决方案：  浮动 绝对定位 flex布局 table-cell表格布局 grid网格布局  实现效果：（中间div能够自适应宽度） 三、方案实践1.浮动什么是浮动：在我们布局的时用">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://i.imgur.com/6aox5hM.png">
-<meta property="og:updated_time" content="2018-08-15T06:57:34.476Z">
+<meta property="og:image" content="https://i.imgur.com/q3e4z6A.jpg">
+<meta property="og:updated_time" content="2018-08-18T08:51:38.469Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="去哪儿网项目实战">
-<meta name="twitter:description" content="前言：&amp;emsp;这是一篇使用vue前端框架从入门到实战的学习记录，内容主要是项目中所使用的技术与遇到的问题，来不及解释了直接来吧！ 一、创建项目&amp;emsp;默认已安装好node.js环境&amp;emsp;关于ESlint的语法提示机制是否使用个人感觉还是根据个人编写代码风格习惯而定。本人在刚开始开发过程中尝试使用会报出很多格式上的错误警告，对于开发效率有了一定影响，最后决定统一使用Vetur插件来格式">
-<meta name="twitter:image" content="https://i.imgur.com/6aox5hM.png">
+<meta name="twitter:title" content="浅谈常见页面布局">
+<meta name="twitter:description" content="前言：因为深知前端布局的重要性，所以写一篇由一个布局设计的题目延伸出前端的几种常见页面布局方式，通过实践与查阅相关资料，加深对于css的布局的理解，之后再分别单独详细说明各个布局。 一、题目： 二、解决方案常见页面布局解决方案：  浮动 绝对定位 flex布局 table-cell表格布局 grid网格布局  实现效果：（中间div能够自适应宽度） 三、方案实践1.浮动什么是浮动：在我们布局的时用">
+<meta name="twitter:image" content="https://i.imgur.com/q3e4z6A.jpg">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/12/去哪儿网项目实战/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/18/浅谈常见页面布局/"/>
 
 
 
 
 
-  <title>去哪儿网项目实战 | 在bug边缘试探</title>
+  <title>浅谈常见页面布局 | 在bug边缘试探</title>
   
 
 
@@ -279,7 +279,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/12/去哪儿网项目实战/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/18/浅谈常见页面布局/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeff_8">
@@ -296,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">去哪儿网项目实战</h1>
+          <h1 class="post-title" itemprop="name headline">浅谈常见页面布局</h1>
         
 
         <div class="post-meta">
@@ -308,8 +308,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-12T14:08:15+08:00">
-                2018-08-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-18T13:16:15+08:00">
+                2018-08-18
               </time>
             
 
@@ -331,8 +331,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue</span>
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
                   </a>
                 </span>
 
@@ -349,9 +349,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/08/12/去哪儿网项目实战/#comments" itemprop="discussionUrl">
+                <a href="/2018/08/18/浅谈常见页面布局/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/08/12/去哪儿网项目实战/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/08/18/浅谈常见页面布局/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -359,7 +359,7 @@
 
           
           
-             <span id="/2018/08/12/去哪儿网项目实战/" class="leancloud_visitors" data-flag-title="去哪儿网项目实战">
+             <span id="/2018/08/18/浅谈常见页面布局/" class="leancloud_visitors" data-flag-title="浅谈常见页面布局">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -393,9 +393,9 @@
           
             <div class="post-gallery-row">
               <a class="post-gallery-img fancybox"
-                 href="https://i.imgur.com/6aox5hM.png" rel="gallery_cjkutynxr0000nc9nmkedrsfv"
+                 href="https://i.imgur.com/q3e4z6A.jpg" rel="gallery_cjkz6q8pj0000j89ne8rd4t5s"
                  itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
-                <img src="https://i.imgur.com/6aox5hM.png" itemprop="contentUrl"/>
+                <img src="https://i.imgur.com/q3e4z6A.jpg" itemprop="contentUrl"/>
               </a>
             
           
@@ -406,23 +406,68 @@
       
 
       
-        <h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>&emsp;这是一篇使用vue前端框架从入门到实战的学习记录，内容主要是项目中所使用的技术与遇到的问题，来不及解释了直接来吧！</p>
-<h1 id="一、创建项目"><a href="#一、创建项目" class="headerlink" title="一、创建项目"></a>一、创建项目</h1><p>&emsp;默认已安装好node.js环境<br><img src="https://i.imgur.com/dL7bAmz.png" alt="createProject"><br>&emsp;关于ESlint的语法提示机制是否使用个人感觉还是根据个人编写代码风格习惯而定。本人在刚开始开发过程中尝试使用会报出很多格式上的错误警告，对于开发效率有了一定影响，最后决定统一使用Vetur插件来格式化代码，暂时还是觉得不错的。<br></p>
-<h4 id="关闭ESlint语法提示"><a href="#关闭ESlint语法提示" class="headerlink" title="关闭ESlint语法提示"></a>关闭ESlint语法提示</h4><p>如果在新建项目时，已经打开了ESlint，但是又不想使用可在项目配置文件中注释关闭<br><img src="https://i.imgur.com/0KbzufS.png" alt=""></p>
-<h1 id="二、项目目录结构"><a href="#二、项目目录结构" class="headerlink" title="二、项目目录结构"></a>二、项目目录结构</h1><p><img src="https://i.imgur.com/TDHeARk.png" alt=""><br><br>在刚开始使用webpack构建项目的时候，不太清楚项目文件夹的结构，所以先对文件夹进行一定的了解。</p>
-<h1 id="三、插件库"><a href="#三、插件库" class="headerlink" title="三、插件库"></a>三、插件库</h1><p><strong>1.轮播图（vue-awesome-swiper）</strong><br><br>效果：<br><img src="https://i.imgur.com/gY0g3MP.gif" alt=""><br><br>安装：<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install </span>vue-awesome-<span class="keyword">swiper </span>--save</span><br></pre></td></tr></table></figure></p>
-<p>使用：安装完成后需要在main.js文件中引入<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> VueAwesomeSwiper <span class="keyword">from</span> <span class="string">'vue-awesome-swiper'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'swiper/dist/css/swiper.css'</span> <span class="comment">//轮播图样式</span></span><br><span class="line">Vue.use(VueAwesomeSwiper)</span><br></pre></td></tr></table></figure></p>
-<p><img src="https://i.imgur.com/bUhKO5E.png" alt=""><br><br><strong>2.FastClick</strong><br><br>&emsp;官方解释：移动设备上的浏览器默认会在用户点击屏幕大约延迟300毫秒后才会触发点击事件，这是为了检查用户是否在做双击。为了能够立即响应用户的点击事件，才有了FastClick。<br> 安装：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> fastclick</span><br></pre></td></tr></table></figure></p>
-<p>使用：main.js中全局引入</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> fastclick <span class="keyword">from</span> <span class="string">'fastclick'</span></span><br><span class="line">fastclick.attach(<span class="built_in">document</span>.body)</span><br></pre></td></tr></table></figure>
-<p><strong>3.reset.css</strong><br><br>安装：<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --<span class="built_in">save</span> <span class="built_in">reset</span>-css</span><br></pre></td></tr></table></figure></p>
-<p>使用：main.js引入<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'styles/reset.css'</span></span><br></pre></td></tr></table></figure></p>
-<p>&emsp;在进行页面开发的时候，为了让页面获得浏览器跨浏览器的兼容性，需要用重置文件css代码覆盖浏览器默认的样式来统一样式。<br><img src="https://i.imgur.com/4XkNQpJ.png" alt=""><br>&emsp;rem：根据html的font-size大小来变化，正是基于这个出发，我们可以在每一个设备下根据设备的宽度设置对应的html字号，从而实现了自适应布局。<br><br><strong>4.border.css</strong><br><br>&emsp;统一的边框样式<br><br><strong>5.iconfont.css</strong><br><br>&emsp;引用<a href="http://www.iconfont.cn" target="_blank" rel="noopener">阿里图标库</a>，可自行选择合适的图标打包下载。<br><img src="https://i.imgur.com/7DkLj2L.png" alt=""><br><br><strong>6.better-scroll（滚动条）</strong><br><br>&emsp;better-scroll是一个插件，旨在解决移动端的滚动环境（已经支持PC）。核心受到iscroll实现的启发，因此更好滚动的API总体上与iscroll兼容。更重要的是，更好的滚动还扩展了一些功能，并根据iscroll优化了性能。<br><br><img src="https://i.imgur.com/uZfWiEM.gif" alt=""><br><br>安装：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> better-<span class="keyword">scroll</span> <span class="comment">--save</span></span><br></pre></td></tr></table></figure></p>
-<p>使用：在组件上引入<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Bscroll <span class="keyword">from</span> <span class="string">"better-scroll"</span>;</span><br><span class="line"><span class="comment">//初始化</span></span><br><span class="line">mounted() &#123;</span><br><span class="line">  <span class="keyword">this</span>.scroll = <span class="keyword">new</span> Bscroll(<span class="keyword">this</span>.$refs.wrapper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><img src="https://i.imgur.com/3gwECTE.png" alt=""><br><br><strong>7.axios</strong><br><br>&emsp;Axios 是一个基于 promise 的 HTTP 库，可以用在浏览器和 node.js 中。<br><br>安装：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> axios <span class="comment">--save</span></span><br></pre></td></tr></table></figure></p>
-<p>使用：<br><br>在项目config/index.js文件中配置api接口<br><br><img src="https://i.imgur.com/EH1Roql.png" alt=""><br><br>axios请求数据<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios from <span class="string">'axios'</span> <span class="comment">// 引入axios请求</span></span><br><span class="line"><span class="comment">// 举例axios获取城市列表数据</span></span><br><span class="line">methods: &#123;</span><br><span class="line">    getCityInfo() &#123;</span><br><span class="line">      axios.<span class="keyword">get</span>(<span class="string">"/api/city.json"</span>).then(<span class="keyword">this</span>.getCityInfoSucc);</span><br><span class="line">    &#125;,</span><br><span class="line">    getCityInfoSucc(res) &#123;</span><br><span class="line">      res = res.<span class="keyword">data</span>;</span><br><span class="line">      <span class="keyword">if</span> (res.ret &amp;&amp; res.<span class="keyword">data</span>) &#123;</span><br><span class="line">          const <span class="keyword">data</span> = res.<span class="keyword">data</span>;</span><br><span class="line">          <span class="keyword">this</span>.hotCities = <span class="keyword">data</span>.hotCities;</span><br><span class="line">          <span class="keyword">this</span>.cities = <span class="keyword">data</span>.cities;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>8.Vuex</strong><br><br>&emsp;<a href="https://vuex.vuejs.org/zh/" target="_blank" rel="noopener">Vuex</a>是一个专为Vue.js应用程序开发的状态管理模式。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。<br><br>使用原因：<br><br>&emsp;对于问题一，传参的方法对于多层嵌套的组件将会非常繁琐，并且对于兄弟组件间的状态传递无能为力。<br><br>&emsp;对于问题二，我们经常会采用父子组件直接引用或者通过事件来变更和同步状态的多份拷贝。以上的这些模式非常脆弱，通常会导致无法维护的代码。<br><br>&emsp;因此，我们为什么不把组件的共享状态抽取出来，以一个全局单例模式管理呢？在这种模式下，我们的组件树构成了一个巨大的“视图”，不管在树的哪个位置，任何组件都能获取状态或者触发行为！<br><br>&emsp;另外，通过定义和隔离状态管理中的各种概念并强制遵守一定的规则，我们的代码将会变得更结构化且易维护。<br><br>安装：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> vuex <span class="comment">--save</span></span><br></pre></td></tr></table></figure></p>
-<p>原理：<br><br><img src="https://i.imgur.com/nu2X1LJ.png" alt=""><br><br>使用：在main.js文件中配置创建的store仓库（文件夹）<br><br><img src="https://i.imgur.com/ijMlk99.png" alt=""></p>
+        <h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>因为深知前端布局的重要性，所以写一篇由一个布局设计的题目延伸出前端的几种常见页面布局方式，通过实践与查阅相关资料，加深对于css的布局的理解，之后再分别单独详细说明各个布局。</p>
+<h1 id="一、题目："><a href="#一、题目：" class="headerlink" title="一、题目："></a>一、题目：</h1><p><img src="https://i.imgur.com/etFJRxm.png" alt=""></p>
+<h1 id="二、解决方案"><a href="#二、解决方案" class="headerlink" title="二、解决方案"></a>二、解决方案</h1><p>常见页面布局解决方案：</p>
+<ol>
+<li>浮动</li>
+<li>绝对定位</li>
+<li>flex布局</li>
+<li>table-cell表格布局</li>
+<li>grid网格布局<br><br></li>
+</ol>
+<p>实现效果：（中间div能够自适应宽度）<br><br><img src="https://i.imgur.com/iITo0zT.gif" alt=""></p>
+<h1 id="三、方案实践"><a href="#三、方案实践" class="headerlink" title="三、方案实践"></a>三、方案实践</h1><p><strong>1.浮动</strong><br><br>什么是浮动：在我们布局的时用到的一种技术，能够方便我们进行布局，通过让元素浮动，我们可以使元素在水平上左右移动，再通过margin属性调整位置。<br><br>浮动原理：使当前元素脱离普通流，相当于浮动起来一样，浮动的框可以左右移动，直至它的外边缘遇到包含框或者另一个浮动框的边缘。<br>代码：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    html * &#123;</span></span><br><span class="line"><span class="undefined">      padding: 0;</span></span><br><span class="line"><span class="undefined">      margin: 0;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.container</span> <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="undefined">      min-height: 100px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.left</span> &#123;</span></span><br><span class="line"><span class="undefined">      width: 300px;</span></span><br><span class="line"><span class="undefined">      float: left;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">background-color</span>: <span class="selector-id">#15A0F5</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.center</span> &#123;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">background-color</span>: <span class="selector-id">#FFBBAA</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.right</span> &#123;</span></span><br><span class="line"><span class="undefined">      width: 300px;</span></span><br><span class="line"><span class="undefined">      float: right;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">background-color</span>: <span class="selector-id">#FFDD00</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span>left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span>right<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"center"</span>&gt;</span>浮动方案<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>优点：</p>
+<ul>
+<li>在图片周围包含文字<br><img src="https://i.imgur.com/ix6UsqB.png" alt=""></li>
+<li>创建网页布局<br><img src="https://i.imgur.com/tyPhKL7.png" alt=""></li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>因为浮动是脱离文档流，需要清除浮动，若处理不好带来很多问题（局限性）</li>
+<li>无法撑起父元素</li>
+<li>同级别的兄弟元素会围绕在周围<br><br></li>
+</ul>
+<p><strong>2.绝对定位</strong><br><br>定义：对象将脱离文档流，不再占据元素在文档中的正常位置。它的偏移位置是以最近已定位的祖先元素作为参照，如果没有已定位的祖先元素，则以顶级元素作为参照。<br><br>代码：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    html * &#123;</span></span><br><span class="line"><span class="undefined">      padding: 0;</span></span><br><span class="line"><span class="undefined">      margin: 0;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.container</span> <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="undefined">      position: absolute;</span></span><br><span class="line"><span class="undefined">      min-height: 100px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.left</span> &#123;</span></span><br><span class="line"><span class="undefined">      width: 300px;</span></span><br><span class="line"><span class="undefined">      left: 0;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">background-color</span>: <span class="selector-id">#15A0F5</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.center</span> &#123;</span></span><br><span class="line"><span class="undefined">      left: 300px;</span></span><br><span class="line"><span class="undefined">      right: 300px;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">background-color</span>: <span class="selector-id">#FFBBAA</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.right</span> &#123;</span></span><br><span class="line"><span class="undefined">      width: 300px;</span></span><br><span class="line"><span class="undefined">      right: 0;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">background-color</span>: <span class="selector-id">#FFDD00</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span>left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"center"</span>&gt;</span>绝对定位方案<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span>right<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>优点：</p>
+<ul>
+<li>快捷且不容易出问题（一般父级元素使用相对定位，子元素使用绝对定位）<br><br></li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>因布局已脱离文档流，子元素都脱离文档流，导致可使用性比较差<br><br></li>
+</ul>
+<p><strong>3.flex布局（推荐）</strong><br><br>定义：Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。<br><br>代码：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    html * &#123;</span></span><br><span class="line"><span class="undefined">      padding: 0;</span></span><br><span class="line"><span class="undefined">      margin: 0;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.container</span> &#123;</span></span><br><span class="line"><span class="undefined">      display: flex;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.container</span> <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="undefined">      min-height: 100px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.left</span> &#123;</span></span><br><span class="line"><span class="undefined">      width: 300px;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">background-color</span>: <span class="selector-id">#15A0F5</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.center</span> &#123;</span></span><br><span class="line"><span class="undefined">      flex: 1;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">background-color</span>: <span class="selector-id">#FFBBAA</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.right</span> &#123;</span></span><br><span class="line"><span class="undefined">      width: 300px;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">background-color</span>: <span class="selector-id">#FFDD00</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span>left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"center"</span>&gt;</span>flex布局方案<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span>right<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>优点：</p>
+<ul>
+<li>简便、完整、响应式地实现各种页面布局（布局的传统解决方案，基于盒状模型，依赖 display 属性 + position属性 + float属性。它对于那些特殊布局非常不方便，比如，垂直居中就不容易实现。）</li>
+<li>兼容性好（目前已经得到所有浏览器支持）<br><br></li>
+</ul>
+<p>缺点：暂时未知<br><br></p>
+<p><strong>4.table-cell表格布局</strong><br><br>网上争议：使用表格布局一直是一个敏感的主题。一般情况下，Web开发人员考虑基于表格布局是禁忌。尽管反对的理由看起来证据很充分，但是大多数开发者除了谴责基于表格的布局，都无法提供完善的使用场景。本人也很少使用表格布局，对此不太了解。<br>代码：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    html * &#123;</span></span><br><span class="line"><span class="undefined">      padding: 0;</span></span><br><span class="line"><span class="undefined">      margin: 0;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.container</span> &#123;</span></span><br><span class="line"><span class="undefined">      width: 100%;</span></span><br><span class="line"><span class="undefined">      height: 100px;</span></span><br><span class="line"><span class="undefined">      display: table;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.container</span> <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="undefined">      display: table-cell;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.left</span> &#123;</span></span><br><span class="line"><span class="undefined">      width: 300px;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">background-color</span>: <span class="selector-id">#15A0F5</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.center</span> &#123;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">background-color</span>: <span class="selector-id">#FFBBAA</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.right</span> &#123;</span></span><br><span class="line"><span class="undefined">      width: 300px;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">background-color</span>: <span class="selector-id">#FFDD00</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span>left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"center"</span>&gt;</span>table布局方案<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span>right<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>优点：</p>
+<ul>
+<li>在某些场合，使用Table是100%的适合、恰当和正确。比如，用table做表格是完全正确的。<br><br></li>
+</ul>
+<p>缺点（主要）：</p>
+<ul>
+<li>table对对于页面布局来说，从语义上看是不正确的。(它描述的是表现，而不是内容。) </li>
+<li>table代码会让阅读者抓狂。(不但无法利用CSS，而且会你不知所云) </li>
+<li>table一旦设计完成就变成死的，很难通过CSS让它展现新的面貌</li>
+<li>Tablle会阻挡浏览器渲染引擎的渲染顺序。(会延迟页面的生成速度，让用户等待更久的时间。) </li>
+<li>Table要比其它html标记占更多的字节。(延迟下载时间，占用服务器更多的流量资源。)<br><br></li>
+</ul>
+<p><strong>5.grid网格布局（技术较新）</strong><br><br>介绍：CSS Grid(网格) 布局使我们能够比以往任何时候都可以更灵活构建和控制自定义网格。 Grid(网格) 布局使我们能够将网页分成具有简单属性的行和列。它还能使我们在不改变任何HTML的情况下，使用 CSS 来定位和调整网格内的每个元素。它允许 HTML 纯粹作为内容的容器。HTML 结构不再受限于样式表现，比如不要为了实现某种布局而多次嵌套，现在这些都可以让 CSS 来完成。<br><br>代码：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="params">&lt;style&gt;</span></span><br><span class="line">    html * &#123;</span><br><span class="line"><span class="symbol">      padding:</span> <span class="number">0</span>;</span><br><span class="line"><span class="symbol">      margin:</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    .<span class="class">container </span>&#123;</span><br><span class="line"><span class="symbol">      display:</span> grid;</span><br><span class="line"><span class="symbol">      width:</span> <span class="number">100</span>%;</span><br><span class="line">      grid-template-rows: <span class="number">100</span>px; <span class="comment">//允许我们指定网格中的行数及行的高度 </span></span><br><span class="line">      grid-template-columns: <span class="number">300</span>px auto <span class="number">300</span>px; <span class="comment">//允许我们指定网格中的列数及列的宽度</span></span><br><span class="line">    &#125;</span><br><span class="line">    .<span class="class">left </span>&#123;</span><br><span class="line">      background-color: <span class="meta">#15A0F5;</span></span><br><span class="line">    &#125;</span><br><span class="line">    .<span class="class">center </span>&#123;</span><br><span class="line">      background-color: <span class="meta">#FFBBAA;</span></span><br><span class="line">    &#125;</span><br><span class="line">    .<span class="class">right </span>&#123;</span><br><span class="line">      background-color: <span class="meta">#FFDD00;</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="params">&lt;/style&gt;</span></span><br><span class="line"><span class="params">&lt;div class="container"&gt;</span></span><br><span class="line">    <span class="params">&lt;div class="left"&gt;</span>left<span class="params">&lt;/div&gt;</span></span><br><span class="line">    <span class="params">&lt;div class="center"&gt;</span>grid网格布局方案<span class="params">&lt;/div&gt;</span></span><br><span class="line">    <span class="params">&lt;div class="right"&gt;</span>right<span class="params">&lt;/div&gt;</span></span><br><span class="line"><span class="params">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>优点：</p>
+<ul>
+<li>灵活性好</li>
+<li>代码量少<br><br></li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>兼容性不太友好（暂时只支持高版本的浏览器）</li>
+</ul>
 
       
     </div>
@@ -440,7 +485,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Vue/" rel="tag"># Vue</a>
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
           
         </div>
       
@@ -453,8 +498,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/02/搭建hexo博客初体验/" rel="next" title="搭建Hexo博客初体验">
-                <i class="fa fa-chevron-left"></i> 搭建Hexo博客初体验
+              <a href="/2018/08/12/去哪儿网项目实战/" rel="next" title="去哪儿网项目实战">
+                <i class="fa fa-chevron-left"></i> 去哪儿网项目实战
               </a>
             
           </div>
@@ -462,10 +507,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/18/浅谈常见页面布局/" rel="prev" title="浅谈常见页面布局">
-                浅谈常见页面布局 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -611,7 +652,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、创建项目"><span class="nav-number">2.</span> <span class="nav-text">一、创建项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关闭ESlint语法提示"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">关闭ESlint语法提示</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、项目目录结构"><span class="nav-number">3.</span> <span class="nav-text">二、项目目录结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、插件库"><span class="nav-number">4.</span> <span class="nav-text">三、插件库</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、题目："><span class="nav-number">2.</span> <span class="nav-text">一、题目：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、解决方案"><span class="nav-number">3.</span> <span class="nav-text">二、解决方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、方案实践"><span class="nav-number">4.</span> <span class="nav-text">三、方案实践</span></a></li></ol></div>
             
 
           </div>
@@ -783,9 +824,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/08/12/去哪儿网项目实战/';
-          this.page.identifier = '2018/08/12/去哪儿网项目实战/';
-          this.page.title = '去哪儿网项目实战';
+          this.page.url = 'http://yoursite.com/2018/08/18/浅谈常见页面布局/';
+          this.page.identifier = '2018/08/18/浅谈常见页面布局/';
+          this.page.title = '浅谈常见页面布局';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
