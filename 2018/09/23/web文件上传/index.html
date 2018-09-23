@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-banana.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-banana.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言：运行一些实例对以前使用过的一些web文件上传方式总结一下顺带加深理解。  form表单上传 ajax上传 html5(uploader api)上传 插件上传（没用过没有发言权）  一、form表单上传：from表单上传基本是最传统的方式，使用form表单input标签内加入type=”file”控件，即可打开系统文件选择对话框，选择文件并上传。实现效果：html代码：12345678910">
+<meta name="keywords" content="前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="说说web文件上传">
+<meta property="og:url" content="http://yoursite.com/2018/09/23/web文件上传/index.html">
+<meta property="og:site_name" content="在bug边缘试探">
+<meta property="og:description" content="前言：运行一些实例对以前使用过的一些web文件上传方式总结一下顺带加深理解。  form表单上传 ajax上传 html5(uploader api)上传 插件上传（没用过没有发言权）  一、form表单上传：from表单上传基本是最传统的方式，使用form表单input标签内加入type=”file”控件，即可打开系统文件选择对话框，选择文件并上传。实现效果：html代码：12345678910">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://i.imgur.com/rDZw1xX.png">
+<meta property="og:updated_time" content="2018-09-23T02:47:11.766Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="说说web文件上传">
+<meta name="twitter:description" content="前言：运行一些实例对以前使用过的一些web文件上传方式总结一下顺带加深理解。  form表单上传 ajax上传 html5(uploader api)上传 插件上传（没用过没有发言权）  一、form表单上传：from表单上传基本是最传统的方式，使用form表单input标签内加入type=”file”控件，即可打开系统文件选择对话框，选择文件并上传。实现效果：html代码：12345678910">
+<meta name="twitter:image" content="https://i.imgur.com/rDZw1xX.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/23/web文件上传/"/>
+
+
+
+
+
+  <title>说说web文件上传 | 在bug边缘试探</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3d79f0870d19c5d0eac94ccf5c5cb8ca";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">在bug边缘试探</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/23/web文件上传/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeff_8">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="在bug边缘试探">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">说说web文件上传</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-23T08:21:36+08:00">
+                2018-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/23/web文件上传/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/09/23/web文件上传/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/09/23/web文件上传/" class="leancloud_visitors" data-flag-title="说说web文件上传">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox"
+                 href="https://i.imgur.com/rDZw1xX.png" rel="gallery_cjme95a4h0000wk9nwk4bjvfv"
+                 itemscope itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://i.imgur.com/rDZw1xX.png" itemprop="contentUrl"/>
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>运行一些实例对以前使用过的一些web文件上传方式总结一下顺带加深理解。</p>
+<ol>
+<li>form表单上传</li>
+<li>ajax上传</li>
+<li>html5(uploader api)上传</li>
+<li>插件上传（没用过没有发言权）</li>
+</ol>
+<h1 id="一、form表单上传："><a href="#一、form表单上传：" class="headerlink" title="一、form表单上传："></a>一、form表单上传：</h1><p>from表单上传基本是最传统的方式，使用form表单input标签内加入type=”file”控件，即可打开系统文件选择对话框，选择文件并上传。<br>实现效果：<br><img src="https://i.imgur.com/Cuzpse4.gif" alt=""><br>html代码：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">action</span>=<span class="string">"FileUpload.php"</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"addFile"</span> <span class="attr">name</span>=<span class="string">"file[]"</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">multiple</span>=<span class="string">"multiple"</span> <span class="attr">accept</span>=<span class="string">"image/*"</span> <span class="attr">onchange</span>=<span class="string">"preview(this.files)"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"form表单上传"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h2</span>&gt;</span>图片预览:<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"imgsPreview"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"deleteImage()"</span>&gt;</span>清空删除<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>form上传需要注意的几点：</p>
+<ul>
+<li>上传方法method必须是post。</li>
+<li>form表单的enctype必须是multipart/form-data。（enctype属性规定在发送到服务器之前应该如何对表单数据进行编码。默认地，表单数据会编码为”application/x-www-form-urlencoded”。就是说，在发送到服务器之前，所有字符都会进行编码（空格转换为 “+”加号，特殊符号转换为 ASCII HEX 值）。<img src="https://i.imgur.com/GIAVzUF.png" alt=""></li>
+<li>action值为上传服务器端url处理地址。</li>
+<li>多文件上传需要使用name=”file[]”以及添加multiple=”multiple”属性。</li>
+<li>accept属性是HTML5的新属性，可规定通过文件上传的类型。</li>
+</ul>
+<p>关于图片预览方法：</p>
+<ul>
+<li>FileReader</li>
+<li>window.URL.createObjectURL（为例）<br>js代码：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fileArr = [];</span><br><span class="line"><span class="keyword">var</span> imgsPreview = <span class="built_in">document</span>.getElementById(<span class="string">"imgsPreview"</span>);</span><br><span class="line"><span class="comment">// 图片预览</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">preview</span>(<span class="params">files</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> imgs_length = files.length;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;imgs_length;i++)&#123;</span><br><span class="line">    fileArr.push(files[i]);</span><br><span class="line">    imgsPreview.innerHTML += <span class="string">"&lt;img id='img"</span> + i + <span class="string">"' class='images'  /&gt;"</span></span><br><span class="line">    <span class="keyword">var</span> img_id = <span class="built_in">document</span>.getElementById(<span class="string">"img"</span> + i);</span><br><span class="line">    img_id.src = <span class="built_in">window</span>.URL.createObjectURL(files[i]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>window.URL.createObjectURL：创建一个新的对象URL,该对象URL可以代表某一个指定的File对象或Blob对象。</p>
+<p>语法：<br><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">objectURL</span> = window.URL.createObjectURL(blob)<span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>blob参数是一个File对象或者Blob对象。</li>
+<li>objectURL是生成的对象URL.通过这个URL,可以获取到所指定文件的完整内容。</li>
+</ul>
+<p>清空预览图片<br>js代码：<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//清空预览图片</span></span><br><span class="line">function deleteImage() &#123;</span><br><span class="line">  <span class="comment">// 移除图片控件输入内容</span></span><br><span class="line">  var <span class="keyword">file</span> = <span class="symbol">$</span>(<span class="string">"#addFile"</span>)</span><br><span class="line">  <span class="keyword">file</span>.after(<span class="keyword">file</span>.clone().val(<span class="string">""</span>)); </span><br><span class="line">  <span class="keyword">file</span>.remove();</span><br><span class="line">  imgsPreview.innerHTML = <span class="string">''</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>form上传对于单个预览文件的删除比较难以实现或者说实现效果不太理想，所以这里采用一次清空效果。</p>
+<p>php代码：<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">    foreach(<span class="symbol">$</span>_FILES as <span class="symbol">$</span><span class="keyword">file</span>) &#123;</span><br><span class="line">        <span class="symbol">$</span>fileNum = count(<span class="symbol">$</span><span class="keyword">file</span>[<span class="string">'name'</span>]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="symbol">$</span>i=<span class="number">0</span>;<span class="symbol">$</span>i&lt;<span class="symbol">$</span>fileNum;<span class="symbol">$</span>i++)&#123;</span><br><span class="line">            <span class="comment">// 判断文件类型大小</span></span><br><span class="line">            <span class="keyword">if</span>( ( (<span class="symbol">$</span><span class="keyword">file</span>[<span class="string">'type'</span>][<span class="symbol">$</span>i] == <span class="string">'image/gif'</span>) || (<span class="symbol">$</span><span class="keyword">file</span>[<span class="string">'type'</span>][<span class="symbol">$</span>i] == <span class="string">'image/png'</span>) || (<span class="symbol">$</span><span class="keyword">file</span>[<span class="string">'type'</span>][<span class="symbol">$</span>i] == <span class="string">'image/jpg'</span>)  || (<span class="symbol">$</span><span class="keyword">file</span>[<span class="string">'type'</span>][<span class="symbol">$</span>i] == <span class="string">'image/jpeg'</span>) &amp;&amp; (<span class="symbol">$</span><span class="keyword">file</span>[<span class="string">'size'</span>][<span class="symbol">$</span>i] &lt; <span class="number">8000000</span>)) )&#123;</span><br><span class="line">                <span class="keyword">if</span>(file_exists(<span class="string">"upload/"</span> . <span class="symbol">$</span><span class="keyword">file</span>[<span class="string">'name'</span>][<span class="symbol">$</span>i]))&#123;</span><br><span class="line">                    echo <span class="symbol">$</span><span class="keyword">file</span>[<span class="string">'name'</span>][<span class="symbol">$</span>i] . <span class="string">" 文件已经存在。 "</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="comment">/**</span></span><br><span class="line"><span class="comment">                    *  $_FILES["file"]["name"] - 被上传文件的名称</span></span><br><span class="line"><span class="comment">                    *  $_FILES["file"]["type"] - 被上传文件的类型</span></span><br><span class="line"><span class="comment">                    *  $_FILES["file"]["size"] - 被上传文件的大小，以字节计</span></span><br><span class="line"><span class="comment">                    *  $_FILES["file"]["tmp_name"] - 存储在服务器的文件的临时副本的名称</span></span><br><span class="line"><span class="comment">                    *  $_FILES["file"]["error"] - 由文件上传导致的错误代码</span></span><br><span class="line"><span class="comment">                    */</span></span><br><span class="line">                    <span class="symbol">$</span><span class="keyword">files</span>[<span class="symbol">$</span>i][<span class="string">'name'</span>]=<span class="symbol">$</span><span class="keyword">file</span>[<span class="string">'name'</span>][<span class="symbol">$</span>i];</span><br><span class="line">                    <span class="symbol">$</span><span class="keyword">files</span>[<span class="symbol">$</span>i][<span class="string">'type'</span>]=<span class="symbol">$</span><span class="keyword">file</span>[<span class="string">'type'</span>][<span class="symbol">$</span>i];</span><br><span class="line">                    <span class="symbol">$</span><span class="keyword">files</span>[<span class="symbol">$</span>i][<span class="string">'tmp_name'</span>]=<span class="symbol">$</span><span class="keyword">file</span>[<span class="string">'tmp_name'</span>][<span class="symbol">$</span>i];</span><br><span class="line">                    <span class="symbol">$</span><span class="keyword">files</span>[<span class="symbol">$</span>i][<span class="string">'error'</span>]=<span class="symbol">$</span><span class="keyword">file</span>[<span class="string">'error'</span>][<span class="symbol">$</span>i];</span><br><span class="line">                    <span class="symbol">$</span><span class="keyword">files</span>[<span class="symbol">$</span>i][<span class="string">'size'</span>]=<span class="symbol">$</span><span class="keyword">file</span>[<span class="string">'size'</span>][<span class="symbol">$</span>i];</span><br><span class="line">                    <span class="comment">// 分割出每个上传文件的类型</span></span><br><span class="line">                    <span class="symbol">$</span>fileType = explode(<span class="string">"/"</span>,<span class="symbol">$</span><span class="keyword">files</span>[<span class="symbol">$</span>i][<span class="string">'type'</span>]);</span><br><span class="line">                    <span class="comment">// 使用时间戳作为命名</span></span><br><span class="line">                    move_uploaded_file(<span class="symbol">$</span><span class="keyword">files</span>[<span class="symbol">$</span>i][<span class="string">"tmp_name"</span>], <span class="string">"upload/"</span> . time().<span class="string">"."</span>.<span class="symbol">$</span>fileType[<span class="number">1</span>]);</span><br><span class="line">                    echo <span class="string">"文件存储在: "</span> . <span class="string">"upload/"</span> . <span class="symbol">$</span><span class="keyword">files</span>[<span class="symbol">$</span>i][<span class="string">"name"</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                echo <span class="symbol">$</span><span class="keyword">file</span>[<span class="string">'name'</span>][<span class="symbol">$</span>i] . <span class="string">" 上传错误或文件格式有误 "</span> . <span class="symbol">$</span><span class="keyword">file</span>[<span class="string">'type'</span>][<span class="symbol">$</span>i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="二、ajax上传"><a href="#二、ajax上传" class="headerlink" title="二、ajax上传"></a>二、ajax上传</h1><p>ajax无刷新方式上传，本质与form表单上传无异，只是把表单里的内容提出来利用ajax提交，并由前端决定请求结果回传后的展示效果。（这里主要是ajax+FormData+JQ）<br><br><br>FormData：用一些键值对来模拟一系列表单控件，即把form中所有表单元素的name与value组装成一个queryString，异步上传二进制文件。<br><br><br>FormData对象的操作方法：<br><br><img src="https://i.imgur.com/1Y5GyCm.png" alt=""><br><br>效果：<br><img src="https://i.imgur.com/3puQEX4.gif" alt=""><br>代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;<span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">id</span>=<span class="string">"upfile"</span> <span class="attr">multiple</span>=<span class="string">"multiple"</span>/&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">&lt;p&gt;<span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"upJQuery"</span> <span class="attr">value</span>=<span class="string">"用jQuery上传"</span> /&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">&lt;div id=<span class="string">"file_list"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"upfile"</span>).addEventListener(<span class="string">"change"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> file_list  = <span class="built_in">document</span>.getElementById(<span class="string">"file_list"</span>);</span><br><span class="line">    my_files = <span class="built_in">document</span>.getElementById(<span class="string">"upfile"</span>).files;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;my_files.length;i++)&#123;</span><br><span class="line">    	self_id = <span class="built_in">Math</span>.round(<span class="built_in">Math</span>.random()*<span class="number">1000</span>); <span class="comment">//生成随机id</span></span><br><span class="line">    	my_files[i].id = self_id;</span><br><span class="line">    	fd.append(self_id,my_files[i]); <span class="comment">//添加数据（append(key,value)）</span></span><br><span class="line">    	<span class="keyword">var</span> img_src = <span class="built_in">window</span>.URL.createObjectURL(my_files[i]);</span><br><span class="line">    	file_list.innerHTML += <span class="string">'&lt;div id="'</span>+self_id+<span class="string">'"&gt;&lt;img src='</span>+img_src+<span class="string">' class="img_preview" /&gt;&lt;span&gt;'</span>+my_files[i].name+<span class="string">'&lt;/span&gt;&amp;nbsp;&lt;em&gt;（'</span>+bytesToSize(my_files[i].size)+<span class="string">'）&lt;/em&gt;&lt;strong&gt;&lt;/strong&gt;&lt;button onclick="del_file(\''</span>+self_id+<span class="string">'\')"&gt;删除&lt;/button&gt;&lt;div class="progress"&gt;&lt;div class="progress-bar" style="width: 0%"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;'</span>;</span><br><span class="line">    	<span class="keyword">var</span> tmp_div = <span class="built_in">document</span>.getElementById(self_id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除预览file</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">del_file</span>(<span class="params">id_str</span>)</span>&#123;</span><br><span class="line">	<span class="comment">// alert(id_str);</span></span><br><span class="line">	fd.delete(id_str); <span class="comment">// delete(key)</span></span><br><span class="line">	$(<span class="string">"#"</span>+id_str).remove(); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ajax上传</span></span><br><span class="line">$(<span class="string">'#upJQuery'</span>).on(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">    	url:<span class="string">"test_ajax.php"</span>,</span><br><span class="line">    	type:<span class="string">"POST"</span>,</span><br><span class="line">    	processData:<span class="literal">false</span>,</span><br><span class="line">    	contentType:<span class="literal">false</span>,</span><br><span class="line">    	data:fd,</span><br><span class="line">    	success:<span class="function"><span class="keyword">function</span>(<span class="params">d</span>)</span>&#123;</span><br><span class="line">    		alert(<span class="string">'上传成功！'</span>);</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// php:</span></span><br><span class="line">foreach($_FILES <span class="keyword">as</span> $key =&gt; $value)&#123;</span><br><span class="line">	$destination = <span class="string">'up_tmp/'</span>.time().$value[<span class="string">'name'</span>];</span><br><span class="line">	move_uploaded_file($value[<span class="string">'tmp_name'</span>],$destination);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="三、html5-uploader-api-上传-（移动端）"><a href="#三、html5-uploader-api-上传-（移动端）" class="headerlink" title="三、html5(uploader api)上传 （移动端）"></a>三、html5(uploader api)上传 （移动端）</h1><p>Uploader模块管理网络上传任务，用于从本地上传各种文件到服务器，并支持跨域访问操作。通过plus.uploader可获取上传管理对象。Uploader上传使用HTTP的POST方式提交数据，数据格式符合Multipart/form-data规范，即rfc1867（Form-based File Upload in HTML）协议。<br><br>效果：<br><br><img src="https://i.imgur.com/AYa9f5e.gif" alt=""></p>
+<p>前端使用的是mui框架<br><br><br>代码：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">"mui-bar mui-bar-nav"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"mui-action-back mui-icon mui-icon-left-nav mui-pull-left"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"mui-title"</span> <span class="attr">id</span>=<span class="string">"refresh"</span>&gt;</span>h5文件上传<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"mui-content"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">id</span>=<span class="string">"addFiles"</span> <span class="attr">src</span>=<span class="string">"images/iconfont-tianjia.png"</span>  <span class="attr">style</span>=<span class="string">"width:50px;height:50px;"</span>  /&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">id</span>=<span class="string">"myIMG"</span> <span class="attr">src</span>=<span class="string">""</span>  <span class="attr">style</span>=<span class="string">"width: 100px;height: 100px;"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  	mui.init();</span></span><br><span class="line"><span class="actionscript">  	<span class="keyword">var</span> vConsole = <span class="keyword">new</span> VConsole();</span></span><br><span class="line"><span class="actionscript">  	mui.plusReady(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="javascript">  		<span class="keyword">var</span> addFiles = <span class="built_in">document</span>.getElementById(<span class="string">"addFiles"</span>);</span></span><br><span class="line"><span class="javascript">  		<span class="keyword">var</span> refresh = <span class="built_in">document</span>.getElementById(<span class="string">"refresh"</span>);</span></span><br><span class="line"><span class="actionscript">  		refresh.addEventListener(<span class="string">'tap'</span>,<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">			<span class="built_in">window</span>.location.reload();</span></span><br><span class="line"><span class="undefined">		&#125;);</span></span><br><span class="line"><span class="actionscript">  		addFiles.addEventListener(<span class="string">'tap'</span>,<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="undefined">			galleryImgs();</span></span><br><span class="line"><span class="undefined">		&#125;);	</span></span><br><span class="line"><span class="undefined">  	&#125;);</span></span><br><span class="line"><span class="actionscript">  	<span class="comment">//相册多选照片</span></span></span><br><span class="line"><span class="actionscript">	<span class="function"><span class="keyword">function</span> <span class="title">galleryImgs</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">		<span class="comment">// 从相册中选择图片</span></span></span><br><span class="line"><span class="actionscript">	    plus.gallery.pick( <span class="function"><span class="keyword">function</span><span class="params">(path)</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">			<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span> <span class="keyword">in</span> path.files)&#123;</span></span><br><span class="line"><span class="undefined">				paths = path.files[i];</span></span><br><span class="line"><span class="actionscript">				plus.io.resolveLocalFileSystemURL( paths, <span class="function"><span class="keyword">function</span> <span class="params">( entry )</span> </span>&#123;</span></span><br><span class="line"><span class="undefined">					upload(entry.toLocalURL(),entry);</span></span><br><span class="line"><span class="actionscript">				&#125;, <span class="function"><span class="keyword">function</span> <span class="params">( e )</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript"><span class="comment">//						alert("读取拍照文件错误："+e.message);</span></span></span><br><span class="line"><span class="undefined">				&#125; );</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="actionscript">	   &#125;, <span class="function"><span class="keyword">function</span> <span class="params">( e )</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">	    &#125;,&#123;filter:<span class="string">"image"</span>,multiple:<span class="literal">true</span>,system:<span class="literal">false</span>&#125;);</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="actionscript">	<span class="comment">//处理文件上传</span></span></span><br><span class="line"><span class="actionscript">	<span class="function"><span class="keyword">function</span> <span class="title">upload</span><span class="params">(path,entry)</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">		<span class="keyword">var</span> server = <span class="string">"http://192.168.0.112:8082/web-upload/h5Upload.php"</span>;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> myIMG = <span class="built_in">document</span>.getElementById(<span class="string">"myIMG"</span>);</span></span><br><span class="line"><span class="undefined">		myIMG.src = path;</span></span><br><span class="line"><span class="actionscript">		<span class="keyword">var</span> task = plus.uploader.createUpload(server,&#123; method: <span class="string">"POST"</span> &#125;,<span class="function"><span class="keyword">function</span> <span class="params">(t, status)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">	        <span class="comment">// 上传完成</span></span></span><br><span class="line"><span class="actionscript">	        <span class="keyword">if</span> (status == <span class="number">200</span>) &#123;</span></span><br><span class="line"><span class="actionscript">	          alert(<span class="string">"Upload success"</span>);</span></span><br><span class="line"><span class="actionscript"><span class="comment">//		          console.log(t);</span></span></span><br><span class="line"><span class="actionscript">	        &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="actionscript">	          alert(<span class="string">"Upload failed: "</span> + status);</span></span><br><span class="line"><span class="undefined">	        &#125;</span></span><br><span class="line"><span class="undefined">	      &#125;</span></span><br><span class="line"><span class="undefined">	    );</span></span><br><span class="line"><span class="undefined">	    </span></span><br><span class="line"><span class="actionscript">	    task.addFile(path, &#123; key: <span class="string">"path"</span> &#125;);</span></span><br><span class="line"><span class="actionscript"><span class="comment">//		    task.addData("string", value);</span></span></span><br><span class="line"><span class="undefined">	    task.start();</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- php --&gt;</span></span><br><span class="line"><span class="php"><span class="meta">&lt;?php</span></span></span><br><span class="line"><span class="php">    $img_url = $_FILES[<span class="string">"path"</span>];</span></span><br><span class="line"><span class="php">    $filesName=time();</span></span><br><span class="line"><span class="php">    $root_directory=dirname(<span class="keyword">__FILE__</span>); <span class="comment">//获取服务器路径</span></span></span><br><span class="line"><span class="php">    $files=$root_directory.<span class="string">"/upload/"</span>.$filesName.<span class="string">".jpg"</span>;  <span class="comment">//确定图片文件位置及名称</span></span></span><br><span class="line"><span class="php">    move_uploaded_file($img_url[<span class="string">'tmp_name'</span>],$files);</span></span><br><span class="line"><span class="php"><span class="meta">?&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<h1 id="四、插件上传"><a href="#四、插件上传" class="headerlink" title="四、插件上传"></a>四、插件上传</h1><p>当上传的需求要求可预览、显示上传进度、中断上传过程、大文件分片上传等等，这时传统的表单上传很难实现这些功能，我们可以借助现有插件完成。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/18/浅谈常见页面布局/" rel="next" title="浅谈常见页面布局">
+                <i class="fa fa-chevron-left"></i> 浅谈常见页面布局
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Jeff_8" />
+            
+              <p class="site-author-name" itemprop="name">Jeff_8</p>
+              <p class="site-description motion-element" itemprop="description">Just do it</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、form表单上传："><span class="nav-number">2.</span> <span class="nav-text">一、form表单上传：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、ajax上传"><span class="nav-number">3.</span> <span class="nav-text">二、ajax上传</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、html5-uploader-api-上传-（移动端）"><span class="nav-number">4.</span> <span class="nav-text">三、html5(uploader api)上传 （移动端）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、插件上传"><span class="nav-number">5.</span> <span class="nav-text">四、插件上传</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jeff_8</span>
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+ -->
+
+<!-- 
+  <span class="post-meta-divider">|</span>
+ -->
+
+<!-- 
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+ -->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/09/23/web文件上传/';
+          this.page.identifier = '2018/09/23/web文件上传/';
+          this.page.title = '说说web文件上传';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("sHLkRBFMatM5guvjr8m8GzVG-gzGzoHsz", "T8G8kg7uBBD0eelPbGH0jor9");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<script type="text/javascript" src="/js/src/love.js"></script>
